@@ -1,5 +1,5 @@
 <?php
-$categories = [
+return [
     'omega3' => ['name' => 'Омега-3'],
     'zhelezo' => ['name' => 'Железо'],
     'calcium' => ['name' => 'Кальций'],
@@ -8,7 +8,7 @@ $categories = [
     'yod' => ['name' => 'Йод'],
     'cink' => ['name' => 'Цинк'],
     'selen' => ['name' => 'Селен'],
-    'Taurine' => ['name' => 'Таурин'],
+    'taurine' => ['name' => 'Таурин'],
     'coenzin' => ['name' => 'Коэнзим'],
     'magnesium' => ['name' => 'Магний'],
     'a' => ['name' => 'Витамин А'],
@@ -17,13 +17,5 @@ $categories = [
     'b' => ['name' => 'Витамины группы B'],
     'forwoman' => ['name' => 'Комплекс для женщин'],
     'forman' => ['name' => 'Комплекс для мужчин'],
-    'for hair' => ['name' => 'Комплекс для волос']
+    'forhair' => ['name' => 'Комплекс для волос']
 ];
-$categories = [];
-foreach($products as $slug => $data) {
-    $categories[] = [
-        'slug' => $slug,
-        'name' => $data['name']
-    ];
-}
-?>

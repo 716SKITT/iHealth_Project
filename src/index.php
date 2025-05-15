@@ -1,4 +1,4 @@
-ß
+    
 <!-- index.php -->
 <?php include('includes/header.php'); ?>
 

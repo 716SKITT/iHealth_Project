@@ -35,13 +35,12 @@ class Cart {
             $stmt->execute([$cartId, $productId, $quantity]);
         }
     }
-
     public static function getUserCartItems($userId) {
         $cartId = self::getOrCreateActiveCart($userId);
         $db = Database::getConnection();
 
         $stmt = $db->prepare("
-            SELECT ci.quantity, p.name, p.price, p.image_url 
+            SELECT ci.product_id, ci.quantity, p.name, p.price, p.image_url 
             FROM cart_items ci
             JOIN products p ON ci.product_id = p.product_id
             WHERE ci.cart_id = ?
@@ -49,4 +48,42 @@ class Cart {
         $stmt->execute([$cartId]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    
+    public static function updateQuantity($userId, $productId, $quantity) {
+        $db = Database::getConnection();
+
+        // Получаем активную корзину
+        $stmt = $db->prepare("SELECT cart_id FROM carts WHERE user_id = ? AND is_active = TRUE");
+        $stmt->execute([$userId]);
+        $cart = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($cart) {
+            if ($quantity > 0) {
+                // Обновляем количество
+                $stmt = $db->prepare("UPDATE cart_items SET quantity = ? WHERE cart_id = ? AND product_id = ?");
+                $stmt->execute([$quantity, $cart['cart_id'], $productId]);
+            } else {
+                // Удаляем товар, если количество стало 0
+                $stmt = $db->prepare("DELETE FROM cart_items WHERE cart_id = ? AND product_id = ?");
+                $stmt->execute([$cart['cart_id'], $productId]);
+            }
+        }
+    }
+
+    public static function clearCart($userId) {
+        $db = Database::getConnection();
+
+        // Получить активную корзину пользователя
+        $stmt = $db->prepare("SELECT cart_id FROM carts WHERE user_id = ? AND is_active = TRUE");
+        $stmt->execute([$userId]);
+        $cart = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($cart) {
+            // Удалить все товары из корзины
+            $stmt = $db->prepare("DELETE FROM cart_items WHERE cart_id = ?");
+            $stmt->execute([$cart['cart_id']]);
+        }
+    }
+
 }

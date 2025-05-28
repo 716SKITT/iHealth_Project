@@ -25,6 +25,8 @@ $router->add('/search', 'SearchController@search');
 
 $router->add('/cart', 'CartController@showCart');
 $router->add('/cart/add', 'CartController@add', 'POST');
+$router->add('/cart/clear', 'CartController@clear');
+$router->add('/cart/update', 'CartController@updateQuantity', 'POST');
 
 $router->add('/auth', 'AuthController@showForm');
 $router->add('/login', 'AuthController@login', 'POST');

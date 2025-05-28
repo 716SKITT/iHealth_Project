@@ -39,7 +39,6 @@ services:
       - ./docker/php.ini:/usr/local/etc/php/conf.d/custom.ini
       - ./docker/apache-config.conf:/etc/apache2/sites-available/000-default.conf
     environment:
-      - APACHE_DOCUMENT_ROOT=/var/www/html  # Исправленный формат
       - DB_HOST=db
       - DB_NAME=ihealth
       - DB_USER=ihealth_user

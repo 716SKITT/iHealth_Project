@@ -102,7 +102,7 @@ $categories = getCategories();
         <span class="icon-badge" id="wishlistCounter">0</span>
     </a>
     
-    <a href="/cart.php" class="icon-link" title="Корзина">
+    <a href="/cart class="icon-link" title="Корзина">
         <img src="/images/icons/cart.png" alt="Корзина" class="header-icon">
         <span class="icon-badge" id="cartCounter">0</span>
     </a>

@@ -1,6 +1,6 @@
     
 <!-- index.php -->
-<?php include('includes/header.php'); ?>
+<?php include(__DIR__ . '/../1old_php/includes/header.php'); ?>
 
 <!-- Основные категории -->
 <div class="categories">
@@ -86,4 +86,4 @@
     </div>
 </section>
 
-<?php include('includes/footer.php'); ?>
+<?php include(__DIR__ . '/../1old_php/includes/footer.php'); ?>

@@ -57,13 +57,13 @@ main.auth-page {
 }
 
 .auth-form input:focus {
-    border-color: #007bff;
+    border-color: #5f6737;
     outline: none;
 }
 
 .auth-form button {
     padding: 12px;
-    background-color: #007bff;
+    background-color: #5f6737;
     color: white;
     border: none;
     border-radius: 10px;

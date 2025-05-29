@@ -36,8 +36,9 @@ $categories = getCategories();
 <body>
 <div class="header">
     <div class="header-left">
-        <img src="/images/logo.png" alt="iHealth" class="logo">
-
+        <a href="/" class="logo-link">
+            <img src="/images/logo.png" alt="iHealth" class="logo">
+        </a>
         <div class="catalog-container">
             <button class="catalog-btn" id="catalogBtn">Каталог</button>
             <div class="dropdown-menu" id="categoriesDropdown">
@@ -55,7 +56,6 @@ $categories = getCategories();
     </div>
 
     <div class="icons">
-        <a href="/wishlist.php" class="icon-link"><img src="/images/icons/heart.png" class="header-icon"></a>
         <a href="/cart" class="icon-link"><img src="/images/icons/cart.png" class="header-icon"></a>
 
         <?php if (isset($_SESSION['user_id'])): ?>

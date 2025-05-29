@@ -4,21 +4,30 @@ class Database {
     private $connection;
 
     private function __construct() {
-    $config = [
-        'host' => 'db', 
-        'dbname' => 'ihealth',
-        'user' => 'ihealth_user',
-        'password' => 'ihealth_pass',
-        'port' => '5432'
-    ];
+        $config = $this->loadConfigFromXml(__DIR__ . '/db_config.xml');
 
-    try {
-        $this->connection = $this->tryConnect($config);
-    } catch(PDOException $e) {
-        error_log("Connection failed: " . $e->getMessage());
-        throw new Exception("Не удалось подключиться к БД в Docker");
+        try {
+            $this->connection = $this->tryConnect($config);
+        } catch(PDOException $e) {
+            error_log("Connection failed: " . $e->getMessage());
+            throw new Exception("Не удалось подключиться к БД в Docker");
+        }
     }
-}
+
+    private function loadConfigFromXml($filePath) {
+        if (!file_exists($filePath)) {
+            throw new Exception("Файл конфигурации не найден: $filePath");
+        }
+
+        $xml = simplexml_load_file($filePath);
+        return [
+            'host' => (string)$xml->host,
+            'dbname' => (string)$xml->dbname,
+            'user' => (string)$xml->user,
+            'password' => (string)$xml->password,
+            'port' => (string)$xml->port
+        ];
+    }
 
     private function tryConnect($config) {
         return new PDO(

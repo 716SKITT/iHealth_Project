@@ -1,17 +1,15 @@
 <?php include __DIR__ . '/partials/header.php'; ?>
 
 <main class="cart-page">
-    <?php if (!empty($items)): ?>
+    <h1 class="cart-title">Ваша корзина</h1>
+
+    <?php if (empty($items)): ?>
+        <p class="empty-message">Корзина пуста.</p>
+    <?php else: ?>
         <form action="/cart/clear" method="post" onsubmit="return confirm('Очистить корзину?');">
             <button type="submit" class="clear-cart-btn">Очистить корзину</button>
         </form>
-    <?php endif; ?>
 
-    <h1>Ваша корзина</h1>
-
-    <?php if (empty($items)): ?>
-        <p>Корзина пуста.</p>
-    <?php else: ?>
         <div class="cart-items">
             <?php foreach ($items as $item): ?>
                 <?php
@@ -40,6 +38,10 @@
                 </div>
             <?php endforeach; ?>
         </div>
+
+        <form action="/cart/clear" method="post" onsubmit="return confirm('Оформить заказ?');">
+            <button type="submit" class="clear-cart-btn">Оформить заказ</button>
+        </form>
     <?php endif; ?>
 </main>
 

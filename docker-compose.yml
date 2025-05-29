@@ -50,10 +50,7 @@ services:
       apt-get install -y libpq-dev postgresql-client &&
       docker-php-ext-install pdo pdo_pgsql &&
       a2enmod rewrite &&
-      chown -R www-data:www-data /var/www/html &&
       echo 'ServerName localhost' >> /etc/apache2/apache2.conf &&
-      a2ensite 000-default &&
-      pkill -9 apache2 || true &&
       exec apache2-foreground"
 volumes:
   postgres_data:

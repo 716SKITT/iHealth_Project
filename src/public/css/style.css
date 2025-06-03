@@ -1,12 +1,7 @@
 /* style.css */
 
 /* Основные стили */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #FBFBEF;
-    margin: 0;
-    padding: 0;
-}
+
 
 /* Стили для хедера */
 .header {
@@ -268,29 +263,43 @@ body {
     transition: transform 0.3s ease;
 }
 
-/* Grid Items */
-.grid-4-column {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    padding: 0 30px;
-    margin: 40px 0;
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
 }
 
+.grid-4-column {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    padding: 30px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    box-sizing: border-box;
+}
+
+
 .grid-item {
-    height: 200px;
+    aspect-ratio: 16 / 9;
     border-radius: 14px;
     box-shadow: 0 3px 15px rgba(0,0,0,0.1);
     overflow: hidden;
     transition: all 0.3s ease;
+    background: #fff;
 }
 
 .grid-item img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    background-color: #f0f0f0;
     transition: transform 0.3s ease;
 }
+
+
 
 /* Articles Section */
 .articles-section {
@@ -448,15 +457,7 @@ body {
     z-index: 10;
 }
 
-body {
-    font-family: "Segoe UI", Roboto, sans-serif;
-    background-color: #f7f9fc;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
+
 
 main.auth-page {
     flex: 1;
@@ -557,6 +558,8 @@ main.auth-page {
     transform: translateY(-5px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
+
+
 
 .grid-item:hover img,
 .half-width-card:hover img {
